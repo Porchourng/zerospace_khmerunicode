@@ -1,4 +1,4 @@
-package com.company;
+package com.porchourng.delete.zerospace;
 
 public class Main {
 
