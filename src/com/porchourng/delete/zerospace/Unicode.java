@@ -30,14 +30,20 @@ public class Unicode {
                 "លោក ​ស៊ីម៉ូន វ៉ាង ​(Simon Wang) ​នៃ​ក្រុមហ៊ុន ​Beijing Canny ​Unisboro Technology ​Co. Ltd បាន​ថ្លែងថា៖\n" +
                 "\n" +
                 "«មនុស្សយន្ត​អាច​ធ្វើ​ការ​ពេញ​មួយ​ថ្ងៃ​ ២៤ម៉ោង​ក្នុង​មួយ​ថ្ងៃ​ ហើយ​គ្មាន​អារម្មណ៍ ធុញទ្រាន់​ទេ។​ ជានិច្ច​ជា​កាល ​វា​ស្វាគមន៍​ដោយ​ភាព​ញញឹម‍»។";
-        for(int i=0; i<str.length(); i++) {
-            if (str.charAt(i) == zerospace) {
-                System.out.println("True");
+        StringBuilder sb = new StringBuilder(str);
+
+        for(int i=0; i<sb.length(); i++) {
+            if (sb.charAt(i) == zerospace) {
+                //System.out.println("True");
+                sb.deleteCharAt(i);
             }
-            if (Unicode.isPureAscii(str.charAt(i))) {
-                System.out.println("ASCII");
+            if (Unicode.isPureAscii(sb.charAt(i))) {
+                //System.out.println("ASCII");
+                sb.deleteCharAt(i);
             }
         }
+
+        System.out.print(sb.toString());
 
 
 
