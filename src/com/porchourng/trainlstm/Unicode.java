@@ -17,14 +17,27 @@ public class Unicode {
      */
     public static String cleanKhmerStr(String str) {
         char zerospace = '\u8203';
+        char zerowidth = '\u200B';
+        char zerowidthJoiner = '\u200D';
         StringBuilder sb = new StringBuilder(str);
         StringBuilder sbNew = new StringBuilder();
         for(int i=0; i<sb.length(); i++) {
-            if (sb.charAt(i) != zerospace && !Unicode.isPureAscii(sb.charAt(i))) {
+            if (sb.charAt(i) != zerospace && sb.charAt(i) != zerowidth && sb.charAt(i) != zerowidthJoiner && !Unicode.isPureAscii(sb.charAt(i))) {
                 sbNew.append(sb.charAt(i));
             }
         }
         return sbNew.toString();
+    }
+
+    public static void validateStr(String str) {
+        char zerospace = '\u8203';
+        StringBuilder sb = new StringBuilder(str);
+        StringBuilder sbNew = new StringBuilder();
+        for(int i=0; i<sb.length(); i++) {
+            if (sb.charAt(i) == zerospace || Unicode.isPureAscii(sb.charAt(i))) {
+                System.out.println(sb.charAt(i));
+            }
+        }
     }
 
     public static int convertUnicodeToInt(char c) {
