@@ -5,13 +5,15 @@ import java.io.FileInputStream;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 
 public class CreateDocument {
 
-    public static void readDocxFile(String url) {
+    public static List<String> readDocxFile(String url) {
+        ArrayList<String> list = new ArrayList<>();
         try {
             File file = new File(url);
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
@@ -19,14 +21,15 @@ public class CreateDocument {
 
             List<XWPFParagraph> paragraphs = document.getParagraphs();
             System.out.println(paragraphs.size());
-          //  System.out.println(paragraphs.get(0).getText());
             for (XWPFParagraph para : paragraphs) {
-                System.out.println(para.getText());
+           //     System.out.println(para.getText());
+                list.add(para.getText());
             }
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return list;
     }
 
     public static void readDocxFile2(String fileName) {
